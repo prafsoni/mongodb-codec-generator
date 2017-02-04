@@ -1,7 +1,7 @@
-package org.pksprojects.mongodb.mapper;
+package org.pksprojects.mongodb.codec.mapper;
 
-import org.pksprojects.mongodb.annotations.Id;
-import org.pksprojects.mongodb.annotations.Ignore;
+import org.pksprojects.mongodb.codec.annotations.Id;
+import org.pksprojects.mongodb.codec.annotations.Ignore;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 

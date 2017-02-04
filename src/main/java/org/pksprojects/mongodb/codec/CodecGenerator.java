@@ -1,7 +1,7 @@
-package org.pksprojects.mongodb;
+package org.pksprojects.mongodb.codec;
 
-import org.pksprojects.mongodb.annotations.Document;
-import org.pksprojects.mongodb.codecs.ClassCodec;
+import org.pksprojects.mongodb.codec.annotations.Document;
+import org.pksprojects.mongodb.codec.codecs.ClassCodec;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.reflections.Reflections;

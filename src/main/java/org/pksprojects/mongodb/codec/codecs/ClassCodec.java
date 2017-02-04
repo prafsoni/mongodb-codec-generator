@@ -1,6 +1,6 @@
-package org.pksprojects.mongodb.codecs;
+package org.pksprojects.mongodb.codec.codecs;
 
-import org.pksprojects.mongodb.mapper.DocumentMapper;
+import org.pksprojects.mongodb.codec.mapper.DocumentMapper;
 import org.bson.BsonReader;
 import org.bson.BsonWriter;
 import org.bson.Document;

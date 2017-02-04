@@ -1,4 +1,4 @@
-package org.pksprojects.mongodb.annotations;
+package org.pksprojects.mongodb.codec.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

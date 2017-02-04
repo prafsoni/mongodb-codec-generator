@@ -1,4 +1,4 @@
-# mongodb-codec-generator
+# mongodb-codec-generator [![Build Status](https://travis-ci.org/prafsoni/mongodb-codec-generator.svg?branch=master)](https://travis-ci.org/prafsoni/mongodb-codec-generator)
 
 Simple MongoDB Codec generator allowing easy object-document mapping.
 
