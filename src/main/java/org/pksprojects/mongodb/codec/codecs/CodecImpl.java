@@ -10,17 +10,17 @@ import org.bson.codecs.DocumentCodec;
 import org.bson.codecs.EncoderContext;
 
 /**
- * Generic class implementation of Codec<T> interface.
+ * Generic class implementation of MongoDB Codec interface.
  * @author Prafull Kumar Soni
  * Created by PKS on 2/3/2017.
  */
-public class ClassCodec<T> implements Codec<T> {
+public class CodecImpl<T> implements Codec<T> {
 
     private Class<T> tClass;
 
     private static final DocumentCodec codec = new DocumentCodec();
 
-    public ClassCodec(Class<T> tClass){
+    public CodecImpl(Class<T> tClass){
         this.tClass = tClass;
     }
 

@@ -5,22 +5,57 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.pksprojects.mongodb</groupId>
-    <artifactId>codec</artifactId>
+    <artifactId>mongodb-codec-generator</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>MongoDB Codec Generator</name>
     <description>Codec generator for mapping classes to and from MongoDB document.</description>
+    <url>https://github.com/prafsoni/mongodb-codec-generator</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/prafsoni/mongodb-codec-generator.git</connection>
+        <developerConnection>scm:git:ssh://github.com:prafsoni/mongodb-codec-generator.git</developerConnection>
+        <url>http://github.com/prafsoni/mongodb-codec-generator/tree/master</url>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/prafsoni/mongodb-codec-generator/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <email>prafull at pksprojects dot org</email>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>github</id>
+            <url>scm:git:ssh://git@github.com/prafsoni/mongodb-codec-generator.git</url>
+        </repository>
+    </distributionManagement>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
-        <maven-source-plugin>3.0.1</maven-source-plugin>
-        <maven-javadoc-plugin>2.10.4</maven-javadoc-plugin>
-        <mongo-driver.version>3.4.2</mongo-driver.version>
-        <log4j2.version>2.8</log4j2.version>
         <reflections.version>0.9.10</reflections.version>
+        <mongo-driver.version>3.4.2</mongo-driver.version>
+        <junit.version>4.12</junit.version>
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     </properties>
 
     <dependencies>
@@ -35,45 +70,59 @@
             <version>${reflections.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
-        <defaultGoal>compile</defaultGoal>
         <plugins>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>${maven-source-plugin}</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>install</phase>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven-javadoc-plugin}</version>
+                <version>${maven-javadoc-plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>install</phase>
+                        <id>attach-javadocs</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>javadoc</goal>
                             <goal>jar</goal>
                         </goals>
                     </execution>

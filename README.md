@@ -64,6 +64,6 @@ User testUser = new User("test");
 collection.insertOne(testUser);
 
 // Get User
-User user = collection.find(Filters.eq("name": "testUser")).first();
+User user = collection.find(Filters.eq("name": "test")).first();
 ```
 

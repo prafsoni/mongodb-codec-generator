@@ -1,7 +1,8 @@
 package org.pksprojects.mongodb.codec;
 
+import org.bson.codecs.Codec;
 import org.pksprojects.mongodb.codec.annotations.Document;
-import org.pksprojects.mongodb.codec.codecs.ClassCodec;
+import org.pksprojects.mongodb.codec.codecs.CodecImpl;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.reflections.Reflections;
@@ -35,13 +36,13 @@ public class CodecGenerator {
         return CodecRegistries.fromCodecs(getCodec().stream().collect(Collectors.toList()));
     }
 
-    private Set<ClassCodec<?>> getCodec(){
+    private Set<Codec<?>> getCodec(){
         return classSet.stream()
                 .map(this::getCodecForClass)
                 .collect(Collectors.toSet());
     }
 
-    private ClassCodec<?> getCodecForClass(Class<?> c){
-        return new ClassCodec<>(c);
+    private Codec<?> getCodecForClass(Class<?> c){
+        return new CodecImpl<>(c);
     }
 }

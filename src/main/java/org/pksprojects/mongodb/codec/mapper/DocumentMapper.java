@@ -91,7 +91,7 @@ public class DocumentMapper {
                 case 0:
                     break;
                 case 1:
-                    if (idFields.get(0).getAnnotation(Id.class) != null & document.get("_id") != null) {
+                    if (idFields.get(0) != null & document.get("_id") != null) {
                         if (idFields.get(0).getType().equals(ObjectId.class))
                             idFields.get(0).set(t, document.getObjectId("_id"));
                         else
