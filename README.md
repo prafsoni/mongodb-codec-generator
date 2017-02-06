@@ -2,6 +2,17 @@
 
 Simple MongoDB Codec generator allowing easy object-document mapping.
 
+Include in your project through Maven:
+
+```xml
+<dependency>
+  <groupId>org.pksprojects.mongodb</groupId>
+  <artifactId>mongodb-codec-generator</artifactId>
+  <version>1.0-RC0</version>
+</dependency>
+```
+
+
 Configure MongoClient as follows:
 ```java
 // project root directory
